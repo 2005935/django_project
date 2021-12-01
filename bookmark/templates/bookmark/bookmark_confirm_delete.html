@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    {% extends 'base.html' %} <!--하위 템플릿은 항상 맨 윗줄에 [extends] 태그를 사용해 어떤 템플릿을 기준 템플릿으로 사용할지 결정-->
+
+    {% block title %}Confirm Delete{% endblock %}
+
+    {% block content %}
+        <form action="" method="post"> <!--정보를 서버로 전달하기 위해 form 태그 사용-->
+            {% csrf_token %} <!--form 태그 안에는 csrf_token을 꼭 함께 사용-->
+            <div class="alert alert-danger">Do you want to delete Bookmark "{{object}}"?</div><!--삭제할 것인지 확인 메시지를 출력하고 확인 버튼을 함께 생성-->
+            <input type="submit" value="Delete" class="btn btn-danger">
+        </form>
+    {% endblock %}
+
+</body>
+</html>

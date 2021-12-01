@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    {% extends 'base.html' %}
+
+    {% block title %}
+        Bookmark Add
+    {% endblock %}
+
+    {% block content %}
+
+    <!--제너릭 뷰잉ㄴ DetailView가 object라는 이름으로 북마크의 값을 전달,
+        object 변수를 이용하여 하나씩 출력,
+        확인 뷰는 큰 용도는 없기 때문에, 특별한 구조없이 값만 출력함-->
+        {{object.site_name}}<br/>
+        {{object.url}}
+
+    {% endblock %}
+
+</body>
+</html>

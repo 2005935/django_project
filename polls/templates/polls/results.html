@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  <h1>{{question.question_text}}</h1> <!--질문을 제목으로 사용하기 위해 폰트 크기를 <h1>로 설정-->
+  <ul>
+    {% for choice in question.choice_set.all %} <!--Choice 객체 순회-->
+      <!--Choice 객체의 choice_text를 순서 없는 리스트로 화면에 보여줌, 각 텍스트 옆에 투표 카운트(choice.votes)를 숫자로 보여줌,
+          vote{{choice.votes|pluralize}}는 choice.votes값에 따라 복수 접미사(s)를 붙여주는 것, 결과적으로 choice.votes 값에 따라 votes가 표시됨-->
+      <li>{{choice.choice_text}} -- {{choice.votes}} vote{{choice.votes|pluralize}}</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'polls:detail' question.id %}">Vote again?</a> <!--Vote Again? 이라는 문장을 보여주고, 그 문장에 URL 링크 연결결->
+
+</body>
+</html>
